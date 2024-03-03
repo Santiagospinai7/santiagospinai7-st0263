@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/Users/santiagoospinaidrobo/Desktop/Eafit/2024-1/Topicos Telematica/santiagospinai7-st0263/sto063/bin/python" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from sqlparse.__main__ import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
