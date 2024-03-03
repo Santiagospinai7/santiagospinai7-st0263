@@ -1,1 +1,1 @@
-from .api_view import login # noqa: F401
+from .api_view import login, logout, sendIndex, query  # noqa: F401
