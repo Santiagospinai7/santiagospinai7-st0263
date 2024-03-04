@@ -14,7 +14,15 @@ from django.conf import settings
 def load_config():
   config_path = os.path.join(settings.BASE_DIR, 'pcliente', 'config.json')
   with open(config_path, 'r') as config_file:
-    return json.load(config_file)
+      config = json.load(config_file)
+  
+  ip = config.get('ip', '127.0.0.1') 
+  port = config.get('port', 8001)
+  url = f"http://{ip}:{port}"
+  
+  # Actualizar la URL en peer_info
+  config['peer_info']['url'] = url
 
-# Inicializa la variable config con el contenido de config.json
+  return config
+
 config = load_config()

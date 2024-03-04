@@ -47,17 +47,23 @@ def logout(request):
 @csrf_exempt
 @api_view(['POST'])
 def sendIndex(request):
+  print(request.data)
   username = request.data.get('username')
   files = request.data.get('files')
+
+  print(username, files)
   
   if username not in peers_info:
     return Response({"message": "Peer not logged in."}, status=404)
   
-  if not files:
+  if files is None:
     return Response({"message": "No files provided."}, status=400)
   
   # Actualizar la lista de archivos para el peer
   peers_info[username]['files'] = files
+
+  for peer in peers_info:
+    print(peer, peers_info[peer])
   
   return Response({"message": "Index updated successfully."})
 

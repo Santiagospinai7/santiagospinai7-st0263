@@ -1,13 +1,12 @@
 {
   "ip": "127.0.0.1",
   "port": 8001,
-  "directory": "path/to/your/files",
-  "peer_neighbor_primary": "http://url_to_primary_neighbor",
-  "peer_neighbor_secondary": "http://url_to_secondary_neighbor",
+  "peer_neighbor_primary": "",
+  "peer_neighbor_secondary": "",
   "server_url": "http://127.0.0.1:8000/api/",
   "peer_info": {
     "username": "peer_username",
     "password": "peer_password",
-    "url": "http://url_de_este_peer/"
+    "url": ""
   }
 }

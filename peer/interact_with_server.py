@@ -7,6 +7,8 @@ django.setup()
 
 from pcliente.config import config
 
+files_storage = []
+
 def login():
   response = requests.post(f"{config['server_url']}login/", json=config['peer_info'])
   print(response.json())
@@ -16,8 +18,12 @@ def logout():
   print(response.json())
 
 def send_index():
-  # Asume que config['peer_info'] incluye una lista de archivos bajo alguna clave
-  response = requests.post(f"{config['server_url']}sendIndex/", json=config['peer_info'])
+  # Asume que config['peer_info'] ya está configurado correctamente
+  payload = config['peer_info']
+  payload['files'] = files_storage  # Envía la lista simulada de archivos
+  
+  # Envía el índice de archivos al servidor central
+  response = requests.post(f"{config['server_url']}sendIndex/", json=payload)
   print(response.json())
 
 def query(filename):
