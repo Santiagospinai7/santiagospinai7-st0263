@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package filemanagement;
+
+service FileManager {
+  rpc Upload(FileInfo) returns (FileResponse) {}
+  
+  rpc Download(FileRequest) returns (FileInfo) {}
+}
+
+message FileInfo {
+  string filename = 1;
+}
+
+message FileRequest {
+  string filename = 1;
+}
+
+message FileResponse {
+  bool success = 1;
+  string message = 2;
+}
