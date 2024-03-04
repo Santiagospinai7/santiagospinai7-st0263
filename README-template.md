@@ -1,50 +1,70 @@
-# info de la materia: STxxxx <nombre>
-#
-# Estudiante(s): nombre, email-eafit
-#
-# Profesor: nombre, email-eafit
-#
-# <para borrar: EL OBJETIVO DE ESTA DOCUMENTACÍON ES QUE CUALQUIER LECTOR CON EL REPO, EN ESPECIAL EL PROFESOR, ENTIENDA EL ALCANCE DE LO DESARROLLADO Y QUE PUEDA REPRODUCIR SIN EL ESTUDIANTE EL AMBIENTE DE DESARROLLO Y EJECUTAR Y USAR LA APLICACIÓN SIN PROBLEMAS>
+# Información de la Materia: ST0263 Tópicos Especiales en Telemática
 
-# <para borrar: renombre este archivo a README.md cuando lo vaya a usar en un caso específico>
+**Estudiante(s):** Santiago Ospina Idrobo, sospinai@eafit.edu.co
 
-# nombre del proyecto, lab o actividad
-#
-# 1. breve descripción de la actividad
-#
-<texto descriptivo>
-## 1.1. Que aspectos cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
+**Profesor:** Edwin Nelson Montoya
 
-## 1.2. Que aspectos NO cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
+# Sistema de Compartición de Archivos P2P
 
-# 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas.
+## 1. Breve Descripción de la Actividad
 
-# 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
+Este proyecto implementa un sistema básico de compartición de archivos Peer-to-Peer (P2P) utilizando Django para el servidor central y gRPC para la comunicación entre los peers. El sistema permite a los usuarios simular la subida y descarga de archivos mediante el intercambio de nombres de archivos como strings.
 
-## como se compila y ejecuta.
-## detalles del desarrollo.
-## detalles técnicos
-## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
-## opcional - detalles de la organización del código por carpetas o descripción de algún archivo. (ESTRUCTURA DE DIRECTORIOS Y ARCHIVOS IMPORTANTE DEL PROYECTO, comando 'tree' de linux)
-## 
-## opcionalmente - si quiere mostrar resultados o pantallazos 
+### 1.1. Aspectos Cumplidos
 
-# 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
+- Implementación de un servidor central en Django para gestionar los peers y la indexación de archivos.
+- Uso de gRPC para la comunicación entre peers, permitiendo operaciones de `upload` y `download`.
+- Dockerización del servidor central y del peer para facilitar la implementación y ejecución.
+- Manejo de la lista de archivos disponibles en cada peer y actualización dinámica de esta lista.
 
-# IP o nombres de dominio en nube o en la máquina servidor.
+### 1.2. Aspectos No Cumplidos
 
-## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
+- La transferencia real de archivos no se implementó; solo se simula con nombres de archivos.
+- No se implementaron medidas de seguridad avanzadas para la comunicación entre peers.
 
-## como se lanza el servidor.
+## 2. Información General de Diseño
 
-## una mini guia de como un usuario utilizaría el software o la aplicación
+Se utilizó una arquitectura P2P donde cada peer puede funcionar tanto como cliente como servidor. Django REST Framework facilita la gestión de peers y archivos, mientras que gRPC se usa para la comunicación directa entre peers.
 
-## opcionalmente - si quiere mostrar resultados o pantallazos 
+## 3. Ambiente de Desarrollo
 
-# 5. otra información que considere relevante para esta actividad.
+- **Lenguaje de Programación**: Python 3.9
+- **Framework**: Django 5.0.2, djangorestframework 3.14.0
+- **gRPC**: grpcio 1.62.0, grpcio-tools 1.62.0
+- **Docker**: Para contenerización de la aplicación.
 
-# referencias:
-<debemos siempre reconocer los créditos de partes del código que reutilizaremos, así como referencias a youtube, o referencias bibliográficas utilizadas para desarrollar el proyecto o la actividad>
-## sitio1-url 
-## sitio2-url
-## url de donde tomo info para desarrollar este proyecto
+### Como se Compila y Ejecuta
+
+- **Servidor Central**: `docker build -t servidor-central .` seguido por `docker run -p 8000:8000 servidor-central`.
+- **Peer**: `docker build -t peer-app .` seguido por `docker run -p 50051:50051 peer-app`.
+
+### Como se Compila y Ejecuta - Local
+
+- **Servidor Central**: `python manage.py runserver`
+- **Peer**: `python grpc_server.py` seguido por `python grpc_client.py`.
+
+### Configuración
+
+Los parámetros del proyecto, como IP y puertos, se configuran mediante archivos `config.json` en cada peer, y variables de entorno o archivos de configuración para el servidor central de Django.
+
+## 4. Ambiente de Ejecución
+
+Similar al ambiente de desarrollo con las imágenes Docker construidas a partir de los `Dockerfile` proporcionados.
+
+### Como se Lanza el Servidor
+
+Utilizar los comandos Docker mencionados anteriormente para iniciar tanto el servidor central como los peers.
+
+### Mini Guía de Uso
+
+- **Para los Peers**: Ejecute el script `interact_with_server.py` para interactuar con el sistema a través de un menú CLI que permite realizar operaciones de `login`, `logout`, `send_index`, `query`, `upload`, y `download`.
+
+## 5. Otra Información
+
+Este proyecto es un ejemplo básico y conceptual de un sistema P2P y está diseñado principalmente con fines educativos.
+
+## Referencias
+
+- Documentación oficial de Django: https://docs.djangoproject.com/en/4.0/
+- Documentación oficial de gRPC: https://grpc.io/docs/languages/python/basics/
+- Docker Docs: https://docs.docker.com/
