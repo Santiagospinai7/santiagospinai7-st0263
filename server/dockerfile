@@ -1,0 +1,20 @@
+# Usa una imagen oficial de Python como imagen padre
+FROM python:3.11.8-slim-bullseye
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copia el archivo de requerimientos al contenedor
+COPY requirements.txt /app/
+
+# Instala las dependencias del proyecto
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el resto del proyecto al contenedor
+COPY . /app/
+
+# Expone el puerto en el que Django escucha por defecto
+EXPOSE 8000
+
+# Comando para ejecutar el servidor Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

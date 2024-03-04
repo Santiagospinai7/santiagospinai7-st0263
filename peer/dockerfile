@@ -1,0 +1,20 @@
+# Usa una imagen oficial de Python como imagen padre
+FROM python:3.11.8-slim-bullseye
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copia el archivo de requerimientos al contenedor
+COPY requirements.txt /app/
+
+# Instala las dependencias del proyecto
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el resto del proyecto al contenedor
+COPY . /app/
+
+# Expone el puerto que el servidor gRPC utiliza
+EXPOSE 50051
+
+# Comando para ejecutar el servidor gRPC
+CMD ["python", "grpc_server.py"]
