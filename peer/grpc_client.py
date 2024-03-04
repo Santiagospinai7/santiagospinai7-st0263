@@ -33,7 +33,7 @@ def query(filename):
   print(response.json())
 
 def grpc_upload(filename):
-  with grpc.insecure_channel('localhost:50051') as channel:
+  with grpc.insecure_channel(f'localhost:{config["port"]}') as channel:
     stub = file_management_pb2_grpc.FileManagerStub(channel)
     response = stub.Upload(file_management_pb2.FileInfo(filename=filename))
 
@@ -42,7 +42,7 @@ def grpc_upload(filename):
   print(f"Servidor gRPC dice: {response.message}")
 
 def grpc_download(filename):
-  with grpc.insecure_channel('localhost:50051') as channel:
+  with grpc.insecure_channel(f'localhost:{config["port"]}') as channel:
     stub = file_management_pb2_grpc.FileManagerStub(channel)
     try:
       response = stub.Download(file_management_pb2.FileRequest(filename=filename))
