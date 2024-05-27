@@ -1,8 +1,8 @@
 # Documentación del Laboratorio de Gestión de Archivos en HDFS y S3
 
-## Autores
-Isaac Tadina G
-Santiago Ospina I
+### Autores
+- Isaac Tadina G
+- Santiago Ospina I
 
 ## Configuración Inicial del Clúster EMR 
 
