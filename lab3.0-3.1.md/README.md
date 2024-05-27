@@ -70,6 +70,15 @@ A continuación se mostraran imagenes de como se practico la gestión y creació
 ![alt text](image-15.png)
 ![alt text](image-16.png)
 
+### Copiar (gestión) de archivos hacia AWS S3 vía HUE.
+- Para esta gestión usamos HUE en la sección de S3 y creamos un folder para poder cargar los datos de la carpeta ONU del datasets
+![alt text](image-17.png)
+![alt text](image-19.png)
+![alt text](image-20.png)
+![alt text](image-21.png)
+
+### Copiar (gestión) de archivos hacia el AWS S3 vía SSH.
+
 ## Conclusión
 
 Este laboratorio demostró la configuración efectiva y la gestión de un entorno EMR para el procesamiento de big data, incluyendo la configuración de seguridad, la resolución de problemas de acceso y la gestión eficiente de datos a gran escala.
