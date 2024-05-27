@@ -23,23 +23,6 @@
 - **Puertos Abiertos en el Clúster**:
   - Puertos 22, 14000, 9870, 8888, 9443, 8890 habilitados para facilitar el acceso y la funcionalidad de las aplicaciones.
 
-## Acceso y Configuración de Servicios
-### Creación del Clúster
-- **Nombre del Clúster**: emr-sospinai-cluster-final
-- **Versión del Clúster**: 6.14.0
-- **Tipo de Instancia**: m4.xlarge
-- **Aplicaciones Instaladas**: Hadoop 3.3.3, Hive 3.1.3, Spark 3.4.1, Hue 4.11.0, JupyterHub 1.5.0
-- **Configuración de Software**:
-  ```json
-  {
-    "Classification": "jupyter-s3-conf",
-    "Properties": {
-      "s3.persistence.enabled": "true",
-      "s3.persistence.bucket": "sospinainotebooks"
-    }
-  }
-
-
 ### HUE
 - **Usuario**: hadoop
 - **Contraseña**: Hadoop2024*
@@ -61,6 +44,26 @@ A continuación se mostraran imagenes de como se practico la gestión y creació
 ### Copiar (gestión) de archivos hacia el HDFS vía HUE.
 - Los datasets fueron cargados en HDFS bajo el directorio `/user/hadoop/datasets`, asegurando que estén disponibles para análisis y procesamiento.
 
+![alt text](image-2.png)
+
+![alt text](image-1.png)
+
+- Subimos el archivo .zip con la informacion de los datasets
+![alt text](image-3.png)
+
+- Sacamos la información del archivo .zip y lo pasamos a la carpeta datasets
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+![alt text](image-9.png)
 
 ## Conclusión
 
@@ -68,7 +71,7 @@ Este laboratorio demostró la configuración efectiva y la gestión de un entorn
 
 ## Comandos Útiles
 
-- Conectar vía SSH al nodo master: `ssh -i <your-key>.pem hadoop@<master-node-ip>`
+- Conectar vía SSH al nodo master: `ssh -i <your-key>.pem ec2-user@<master-node-ip>`
 - Reiniciar servicio HUE: `systemctl restart hue.service`
 - Listar archivos en HDFS: `hdfs dfs -ls /user/hadoop/datasets`
 
