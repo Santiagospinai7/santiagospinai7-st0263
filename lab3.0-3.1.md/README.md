@@ -1,4 +1,3 @@
-```markdown
 # Documentación del Laboratorio de Gestión de Archivos en HDFS y S3
 
 ## Configuración Inicial del Clúster EMR
@@ -38,6 +37,13 @@
 ![alt text](image.png)
 
 ## Gestión de Datasets
+
+### Configuración del bucket:
+-Editamos la configuración para que sea de acceso publico:
+![alt text](image-22.png)
+![alt text](image-23.png)
+![alt text](image-24.png)
+
 A continuación se mostraran imagenes de como se practico la gestión y creación de archivos.
 
 ### Copiar (gestión) de archivos hacia el HDFS vía HUE.
@@ -78,6 +84,10 @@ A continuación se mostraran imagenes de como se practico la gestión y creació
 ![alt text](image-21.png)
 
 ### Copiar (gestión) de archivos hacia el AWS S3 vía SSH.
+- Para esta gestión copiamos un archivo desde nuestro HDFS al bucket de S3
+![alt text](image-25.png)
+![alt text](image-26.png)
+![alt text](image-27.png)
 
 ## Conclusión
 
@@ -88,5 +98,3 @@ Este laboratorio demostró la configuración efectiva y la gestión de un entorn
 - Conectar vía SSH al nodo master: `ssh -i <your-key>.pem ec2-user@<master-node-ip>`
 - Reiniciar servicio HUE: `systemctl restart hue.service`
 - Listar archivos en HDFS: `hdfs dfs -ls /user/hadoop/datasets`
-
-```
