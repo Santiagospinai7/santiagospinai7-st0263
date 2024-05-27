@@ -35,7 +35,6 @@
 - **Usuario**: jovyan
 - **Contraseña**: jupyter
 - Se creó y probó un notebook para validar las configuraciones de las variables `spark` y `sc`.
-
 ![alt text](image.png)
 
 ## Gestión de Datasets
@@ -43,27 +42,33 @@ A continuación se mostraran imagenes de como se practico la gestión y creació
 
 ### Copiar (gestión) de archivos hacia el HDFS vía HUE.
 - Los datasets fueron cargados en HDFS bajo el directorio `/user/hadoop/datasets`, asegurando que estén disponibles para análisis y procesamiento.
-
 ![alt text](image-2.png)
-
 ![alt text](image-1.png)
 
 - Subimos el archivo .zip con la informacion de los datasets
 ![alt text](image-3.png)
 
 - Sacamos la información del archivo .zip y lo pasamos a la carpeta datasets
-
 ![alt text](image-4.png)
-
 ![alt text](image-5.png)
-
 ![alt text](image-6.png)
-
 ![alt text](image-7.png)
-
 ![alt text](image-8.png)
-
 ![alt text](image-9.png)
+
+### Copiar (gestión) de archivos hacia el HDFS vía SSH.
+- Mostrar lista de carpetas que hay en una ruta:
+![alt text](image-10.png)
+
+- Mostrar bytes de los archivos dentro de una carpeta:
+![alt text](image-11.png)
+
+- Mover archivos de una carpeta a otra, y luego eliminar una carpeta
+![alt text](image-12.png)
+![alt text](image-13.png)
+![alt text](image-14.png)
+![alt text](image-15.png)
+![alt text](image-16.png)
 
 ## Conclusión
 
