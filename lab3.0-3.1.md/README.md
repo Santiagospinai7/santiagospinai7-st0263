@@ -1,6 +1,10 @@
 # Documentación del Laboratorio de Gestión de Archivos en HDFS y S3
 
-## Configuración Inicial del Clúster EMR
+## Autores
+Isaac Tadina G
+Santiago Ospina I
+
+## Configuración Inicial del Clúster EMR 
 
 ### Creación del Clúster
 - **Nombre del Clúster**: emr-sospinai-cluster-final
