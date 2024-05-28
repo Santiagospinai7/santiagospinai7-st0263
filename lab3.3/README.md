@@ -70,7 +70,7 @@ Este laboratorio tiene como objetivo implementar un data warehouse utilizando AW
 ## Comandos Utilizados
 ```sql
 -- Crear esquema externo
-CREATE EXTERNAL SCHEMA myspectrum_schema FROM DATA CATALOG DATABASE 'myspectrum_db' IAM_ROLE 'arn:aws:iam::433075868803:role/LabRole' CREATE EXTERNAL DATABASE IF NOT EXISTS;
+CREATE EXTERNAL SCHEMA myspectrum_schema FROM DATA CATALOG DATABASE 'myspectrum_db' IAM_ROLE 'arn:aws:iam::058883815405:role/LabRole' CREATE EXTERNAL DATABASE IF NOT EXISTS;
 
 -- Crear tabla externa
 CREATE EXTERNAL TABLE myspectrum_schema.sales(
@@ -86,10 +86,10 @@ CREATE EXTERNAL TABLE myspectrum_schema.sales(
     saletime TIMESTAMP)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 STORED AS TEXTFILE
-LOCATION 's3://emontoyadatalake/datasets/tickitdb2/sales/';
+LOCATION 's3://sospinainotebooks/datasets/tickitdb2/events/allevents_pipe.txt';
 
 -- Cargar datos en tabla nativa
-COPY event2 FROM 's3://emontoyadatalake/datasets/tickitdb2/events/allevents.txt' IAM_ROLE 'arn:aws:iam::433075868803:role/LabRole' DELIMITER '|' TIMEFORMAT 'YYYY-MM-DD HH:MI:SS' REGION 'us-east-1';
+COPY event2 FROM 's3://sospinainotebooks/datasets/tickitdb2/events/allevents_pipe.txt' IAM_ROLE 'arn:aws:iam::058883815405:role/LabRole' DELIMITER '|' TIMEFORMAT 'YYYY-MM-DD HH:MI:SS' REGION 'us-east-1';
 
 -- Consulta combinando tablas externas y nativas
 SELECT TOP 10 myspectrum_schema.sales.eventid, SUM(myspectrum_schema.sales.pricepaid) FROM myspectrum_schema.sales, event2 WHERE myspectrum_schema.sales.eventid = event2.eventid AND myspectrum_schema.sales.pricepaid > 30 GROUP BY myspectrum_schema.sales.eventid ORDER BY 2 DESC;
