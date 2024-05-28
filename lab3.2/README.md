@@ -16,7 +16,7 @@ Este laboratorio se enfocó en la implementación de un data warehouse sencillo 
   imagenes de creacion de crawlers para catalogar datos:
   ![alt text](image-6.png)
   ![alt text](image-7.png)
-  ![alt text](image-8.png)
+  ![alt text](image-8.png) 
 
 - **AWS Athena**: Configurado para realizar consultas SQL eficientes sobre las estructuras de datos catalogadas por AWS Glue.
 
