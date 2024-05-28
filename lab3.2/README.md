@@ -12,7 +12,18 @@ Este laboratorio se enfocó en la implementación de un data warehouse sencillo 
   - `onudb` para datos de la ONU.
   - `flightsdb` para datos de vuelos.
   Crawlers configurados para estructurar estos datos.
+
+  imagenes de creacion de crawlers para catalogar datos:
+  ![alt text](image-6.png)
+  ![alt text](image-7.png)
+  ![alt text](image-8.png)
+
 - **AWS Athena**: Configurado para realizar consultas SQL eficientes sobre las estructuras de datos catalogadas por AWS Glue.
+
+Configuracion del archivo de salida:
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
 
 ## Datos Utilizados
 - Datasets de la **ONU** y **Tickit**, así como datos detallados de vuelos.
